@@ -4,8 +4,14 @@ import random
 #Importa a biblioteca string para utlização de .ascii_uppercase, .ascii_lowercase e .digits no gerador de senhas
 import string 
 
+#Importa para limpar a tela
+import os
+
 #Importa datetime para os relatórios
 from datetime import datetime
+
+#Importa time para aguardar um certo tempo ate limpar a tela
+import time
 
 #Dicionário para contabilizar a quantidade de acessos em cada item do programa
 
@@ -39,7 +45,7 @@ relatorio_senha_gerada = []
 #Lista para armazenar as senhas transformadas
 relatorio_senha_transformada = []
 
-
+#Tranforma duracao em global para que possa ser identificado em todo o codigo
 global duracao
 
 
@@ -66,9 +72,18 @@ def cpf_valido():
             return cpf_input
         else:
             print("\nCPF inválido! Tente novamente.")
-            
+
+
+#Funçao para limpar a tela compativel com Windows, macOS e Linux
+def clear_screen():
+    # Para Windows
+    if os.name == 'nt':
+        _ = os.system('cls')
+    # Para macOS e Linux
+    else:
+        _ = os.system('clear')
         
-#Introduz o programa e pede autorização do usuário para utilização do seu nome durante o programa
+#Introduz o programa e pede autorização do usuário para utilização do seu nome e cpf durante o programa
 def introducao():
     global inicio_programa
     inicio_programa = datetime.now()
@@ -78,22 +93,30 @@ def introducao():
     global nome
     nome = input('\n')
     cpf = cpf_valido()
+    time.sleep(5)
+    clear_screen()
     print(f"\n{nome}, segundo a LGPD o usuário deve ser informado sobre qualquer utilização de seus dados, por isso pedimos o seu consentimento para utilizar o seu nome e cpf apenas para identificação pessoal e também para tornar esse código mais pessoal durante a sua utilização.")
     print('\n')
     print("Você concorda com os nossos termos de utilização e política de privacidade?")
     
     print("\nCONCORDO ou DISCORDO")
     lgpd = input('\n').lower()
+    time.sleep(5)
+    clear_screen()
     
     if lgpd == "concordo":
         print("Muito obrigada, seus dados estão seguros conosco!")
         print(f"\nSeja bem vindo(a) {nome}")
         
+
+# Enquanto verdade pede uma senha e somente continua o programa se a senha seguir o padrao de 6 digitos
         while True:
             print("\nDigite uma senha numérica de 6 dígitos para iniciar o programa. Essa senha também será utilizada para acessar aos relatórios:")
             
             global senha_segura    
             senha_segura = input('\nSenha: ')
+            time.sleep(5)
+            clear_screen()
             if senha_segura.isdigit() and len(senha_segura) == 6: 
                 break
             else:
@@ -102,6 +125,8 @@ def introducao():
             
         print("\nSenha registrada com sucesso.")
         print("\nExecutando o programa")
+        time.sleep(5)
+        clear_screen()
         acessos["menu"] += 1
         menu_principal()
             
@@ -113,7 +138,7 @@ def introducao():
         print("Opção inválida!")
         introducao()
 
-    
+# Funcao menu principal     
 def menu_principal():
     print("\nNo menu abaixo escolha o que deseja fazer:")
     print("\n(1) Aprender")
@@ -124,6 +149,8 @@ def menu_principal():
     print("\n(6) Sair")
     
     escolha_mp = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try:
         if escolha_mp == 1:
@@ -156,7 +183,8 @@ def menu_principal():
             print("\nErro. Digite uma opção válida!")
     except ValueError:
         print("Erro, opção inválida!")
-            
+
+# Funcao menu aprender 
 def menu_aprender():
     print("\nÓtimo, agora selecione o que deseja aprender:")
     print('\n')
@@ -168,6 +196,8 @@ def menu_aprender():
     print("(6) Sair")
     
     escolha_ma = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try:
         if escolha_ma == 1:
@@ -231,6 +261,7 @@ def int_python():
     print("\nMenor que: «")
     print("\nMaior ou igual a: »=")
     print("\nMenor ou igual a: «=")
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Fazer um quiz")
     print("(2) Menu principal")
@@ -238,6 +269,8 @@ def int_python():
     print('\n')
     
     escolha_intpy = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try: 
         if escolha_intpy == 1:
@@ -266,6 +299,7 @@ def hist_curiosidade():
     print("\n. Python é uma linguagem interpretada, isso significa que o código é executado linha por linha por um interpretador, em vez de ser convertido em código como acontece com linguagens compiladas.")
     print("\n. Python vem sendo uma linguagem amplamente utilizada no ensino de programação")
     print("\n. A sintaxe de Python foi projetada para ser intuitiva e fácil de ler, usando identação, espaços em branco, para definir blocos de código, o que ajuda na clareza e na organização")
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("(1) Fazer um quiz")
     print("(2) Menu principal")
@@ -273,6 +307,8 @@ def hist_curiosidade():
     print('\n')
     
     escolha_histcuri = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try: 
         if escolha_histcuri == 1:
@@ -301,12 +337,15 @@ def lista_de_comandos():
     print("\nstr([valor]): Converte um valor para o tipo string.")
     print("\nlist([objeto]): Converte um objeto (como um conjunto ou tupla) em uma lista.")
     print("\nrange([início], [fim], [passo]): Retorna uma sequência de números, útil para loops.")
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Fazer um quiz")
     print("(2) Menu principal")
     print("(3) Sair")
     
     escolha_listcomand = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try: 
         if escolha_listcomand == 1:
@@ -355,13 +394,15 @@ def boas_praticas():
     print("\nSegundo a LGPD uma empresa só pode coletar dados com o consetimento do usuário, devendo ele ser claramente informado sobre quais dados são coletados e qual a finalidade deste dado. A coleta e o consentimento devem ter bases legais.")
     print('\n')
     print("Um exemplo prático e simples é uma empresa de delivery de comidas. Essa empresa precisa somente do seu nome, endereço e telefone, esses dados devem ser coletados apenas para fim de entrega ou cadastramento caso o usuário seja previamente informado. O usuário deve ter conhecimento de como serão tratados os seus dados.")
-    
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Fazer um quiz")
     print("(2) Menu principal")
     print("(3) Sair")
     
     escolha_boas_praticas = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try: 
         if escolha_boas_praticas == 1:
@@ -382,6 +423,7 @@ def boas_praticas():
     except ValueError:
         print("Erro, opção inválida!")
 
+# Funcao menu quiz
 def menu_quiz():
     print("Selecione o quiz que deseja fazer.")
     print("\n1) Introdução à Python")
@@ -392,6 +434,8 @@ def menu_quiz():
     print("6) Sair")
     
     escolha_mq = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try:
         if escolha_mq == 1:
@@ -494,20 +538,24 @@ def quiz_intropython(quiz_1):
             print(f"  {chave}) {texto}")
         resposta = input("\nSua resposta: ").lower()
         if resposta == item["correta"]:
-            print("Correto!")
+            print("\nCorreto!")
             acertos1 += 1
         else:
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos1} de {len(quiz_1)} perguntas.")
     notas_quiz("Introdução à Python", acertos1)
-    acessos["menu"] += 1
+    time.sleep(10)
+    clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
     print('\n')
     
     escolha_intpy = int(input('\nSua escolha: '))
-    
+    time.sleep(5)
+    clear_screen()
+
+
     try: 
         if escolha_intpy == 1:
             acessos["menu"] += 1
@@ -591,14 +639,18 @@ def quiz_histcuri(quiz_2):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos2} de {len(quiz_2)} perguntas.")
     notas_quiz("História e Curiosidades", acertos2)
-    acessos["menu"] += 1
+    time.sleep(10)
+    clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
     print('\n')
     
     escolha_histcuri = int(input('\nSua escolha: '))
-    
+    time.sleep(5)
+    clear_screen()
+
+
     try: 
         if escolha_histcuri == 1:
             acessos["menu"] += 1
@@ -683,14 +735,18 @@ def quiz_listcomand(quiz_3):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos3} de {len(quiz_3)} perguntas.")
     notas_quiz("Lista de comandos", acertos3)
-    acessos["menu"] += 1
+    time.sleep(10)
+    clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
     print('\n')
     
     escolha_listcomand = int(input('\nSua escolha: '))
-    
+    time.sleep(5)
+    clear_screen()
+
+
     try: 
         if escolha_listcomand == 1:
             acessos["menu"] += 1
@@ -775,14 +831,18 @@ def quiz_boas_praticas(quiz_4):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos4} de {len(quiz_4)} perguntas.")
     notas_quiz("Boas práticas", acertos4)
-    acessos["menu"] += 1
+    time.sleep(10)
+    clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
     print('\n')
     
     escolha_boas_praticas = int(input('\nSua escolha: '))
-    
+    time.sleep(5)
+    clear_screen()
+
+
     try: 
         if escolha_boas_praticas == 1:
             acessos["menu"] += 1
@@ -821,6 +881,8 @@ def gerador_de_senha_(tamanho = 16, maiusculas = True, minusculas= True, numeros
     senha = ''.join(random.choices(caracteres, k=tamanho))
     return senha
     acessos["menu"] += 1
+    time.sleep(5)
+    clear_screen()
     menu_principal()
     
 def gerador_de_senha():
@@ -843,12 +905,16 @@ def gerador_de_senha():
         print("=" * 35)
     
     
-        continuar = input("Deseja gerar outra senha? (s/n):  ").strip().lower()
+        continuar = input("Deseja gerar outra senha? (s/n):  ").strip().lower()    
+        time.sleep(5)
+        clear_screen()
         acessos["gerador"] += 1
         
         if continuar != 's':
             print("Encerrando o gerador de senha. Até mais!")
             acessos["menu"] += 1
+            time.sleep(5)
+            clear_screen()
             menu_principal()
 
 #Transformador de senha, transforma um número para base hexadecimal, embaralha e complementa a senha com caracteres especiais 
@@ -880,17 +946,28 @@ def transformador_de_senha():
 
         continuar = input("Deseja transformar outra senha? (s/n):  ").strip().lower()
         acessos["transformador"] += 1
+        time.sleep(5)
+        clear_screen()
+
         
         if continuar != 's':
             print("Encerrando o transformador de senha. Até mais!")
             acessos["menu"] += 1
+            time.sleep(5)
+            clear_screen()
             menu_principal()
-            
+
+# Funcao de relatorios 
+
 def relatorios(senha_segura):
     tentativar = input("Digite sua senha para acessar os relatórios: ")
     
     if tentativar == senha_segura:
-        print("\nAcesso permitido. Seja bem vindo!")
+        time.sleep(5)
+        clear_screen()
+        print("\nAcesso permitido. Seja bem vindo!")        
+        time.sleep(5)
+        clear_screen()
     
         print("\nSelecione o relatório que deseja ter acesso:")
         print("\n1) Quantidade de acessos a cada funcionalidade")
@@ -901,7 +978,10 @@ def relatorios(senha_segura):
         print("\n6) Sair")
     
         escolha_relatórios = int(input('\nSua escolha: '))
-    
+        time.sleep(5)
+        clear_screen()
+
+
         try:
             if escolha_relatórios == 1:
                 acessos["acessos_funcionalidades"] += 1
@@ -952,12 +1032,15 @@ def acessos_partes():
     print(f"\nRelatório notas quiz: {acessos['notas']} vez(es)")
     print(f"\nRelatório senhas geradas: {acessos['senha_gerada']} vez(es)")
     print(f"\nRelatório senhas transformadas: {acessos['senha_transformada']} vez(es)")
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
     print('\n')
     
     escolha_acesso = int(input('\nSua escolha: '))
+    time.sleep(5)
+    clear_screen()
     
     try: 
         if escolha_acesso == 1:
@@ -996,6 +1079,8 @@ def mostrar_notas():
         print('\n')
     
         escolha_notas = int(input('\nSua escolha: '))
+        time.sleep(5)
+        clear_screen()
     
         try: 
             if escolha_notas == 1:
@@ -1056,7 +1141,9 @@ def mostrar_senhag():
         print('\n')
     
         escolha_senhag = int(input('\nSua escolha: '))
-    
+        time.sleep(5)
+        clear_screen()
+        
         try: 
             if escolha_senhag == 1:
                 acessos["menu"] += 1
@@ -1081,7 +1168,9 @@ def mostrar_senhag():
             print('\n')
     
             escolha_senhag2 = int(input('\nSua escolha: '))
-    
+            time.sleep(5)
+            clear_screen()
+            
             try: 
                 if escolha_senhag2 == 1:
                     acessos["menu"] += 1
@@ -1117,7 +1206,9 @@ def mostrar_senhat():
         print('\n')
     
         escolha_senhat = int(input('\nSua escolha: '))
-    
+        time.sleep(5)
+        clear_screen()
+        
         try: 
             if escolha_senhat == 1:
                 acessos["menu"] += 1
@@ -1142,7 +1233,9 @@ def mostrar_senhat():
             print('\n')
     
             escolha_senhat2 = int(input('\nSua escolha: '))
-    
+            time.sleep(5)
+            clear_screen()
+            
             try: 
                 if escolha_senhat2 == 1:
                     acessos["menu"] += 1
