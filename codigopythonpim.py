@@ -93,7 +93,7 @@ def introducao():
     global nome
     nome = input('\n')
     cpf = cpf_valido()
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     print(f"\n{nome}, segundo a LGPD o usuário deve ser informado sobre qualquer utilização de seus dados, por isso pedimos o seu consentimento para utilizar o seu nome e cpf apenas para identificação pessoal e também para tornar esse código mais pessoal durante a sua utilização.")
     print('\n')
@@ -101,7 +101,7 @@ def introducao():
     
     print("\nCONCORDO ou DISCORDO")
     lgpd = input('\n').lower()
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     if lgpd == "concordo":
@@ -115,7 +115,7 @@ def introducao():
             
             global senha_segura    
             senha_segura = input('\nSenha: ')
-            time.sleep(5)
+            time.sleep(1)
             clear_screen()
             if senha_segura.isdigit() and len(senha_segura) == 6: 
                 break
@@ -125,7 +125,7 @@ def introducao():
             
         print("\nSenha registrada com sucesso.")
         print("\nExecutando o programa")
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
         acessos["menu"] += 1
         menu_principal()
@@ -149,7 +149,7 @@ def menu_principal():
     print("\n(6) Sair")
     
     escolha_mp = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try:
@@ -196,7 +196,7 @@ def menu_aprender():
     print("(6) Sair")
     
     escolha_ma = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try:
@@ -269,7 +269,7 @@ def int_python():
     print('\n')
     
     escolha_intpy = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try: 
@@ -307,7 +307,7 @@ def hist_curiosidade():
     print('\n')
     
     escolha_histcuri = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try: 
@@ -344,7 +344,7 @@ def lista_de_comandos():
     print("(3) Sair")
     
     escolha_listcomand = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try: 
@@ -401,7 +401,7 @@ def boas_praticas():
     print("(3) Sair")
     
     escolha_boas_praticas = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try: 
@@ -434,7 +434,7 @@ def menu_quiz():
     print("6) Sair")
     
     escolha_mq = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try:
@@ -544,7 +544,7 @@ def quiz_intropython(quiz_1):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos1} de {len(quiz_1)} perguntas.")
     notas_quiz("Introdução à Python", acertos1)
-    time.sleep(10)
+    time.sleep(2)
     clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
@@ -552,7 +552,7 @@ def quiz_intropython(quiz_1):
     print('\n')
     
     escolha_intpy = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
 
 
@@ -639,7 +639,7 @@ def quiz_histcuri(quiz_2):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos2} de {len(quiz_2)} perguntas.")
     notas_quiz("História e Curiosidades", acertos2)
-    time.sleep(10)
+    time.sleep(2)
     clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
@@ -647,7 +647,7 @@ def quiz_histcuri(quiz_2):
     print('\n')
     
     escolha_histcuri = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
 
 
@@ -735,7 +735,7 @@ def quiz_listcomand(quiz_3):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos3} de {len(quiz_3)} perguntas.")
     notas_quiz("Lista de comandos", acertos3)
-    time.sleep(10)
+    time.sleep(2)
     clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
@@ -743,7 +743,7 @@ def quiz_listcomand(quiz_3):
     print('\n')
     
     escolha_listcomand = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
 
 
@@ -831,7 +831,7 @@ def quiz_boas_praticas(quiz_4):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos4} de {len(quiz_4)} perguntas.")
     notas_quiz("Boas práticas", acertos4)
-    time.sleep(10)
+    time.sleep(2)
     clear_screen()
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
@@ -839,7 +839,7 @@ def quiz_boas_praticas(quiz_4):
     print('\n')
     
     escolha_boas_praticas = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
 
 
@@ -881,7 +881,7 @@ def gerador_de_senha_(tamanho = 16, maiusculas = True, minusculas= True, numeros
     senha = ''.join(random.choices(caracteres, k=tamanho))
     return senha
     acessos["menu"] += 1
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     menu_principal()
     
@@ -906,14 +906,14 @@ def gerador_de_senha():
     
     
         continuar = input("Deseja gerar outra senha? (s/n):  ").strip().lower()    
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
         acessos["gerador"] += 1
         
         if continuar != 's':
             print("Encerrando o gerador de senha. Até mais!")
             acessos["menu"] += 1
-            time.sleep(5)
+            time.sleep(1)
             clear_screen()
             menu_principal()
 
@@ -946,14 +946,14 @@ def transformador_de_senha():
 
         continuar = input("Deseja transformar outra senha? (s/n):  ").strip().lower()
         acessos["transformador"] += 1
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
 
         
         if continuar != 's':
             print("Encerrando o transformador de senha. Até mais!")
             acessos["menu"] += 1
-            time.sleep(5)
+            time.sleep(1)
             clear_screen()
             menu_principal()
 
@@ -963,10 +963,10 @@ def relatorios(senha_segura):
     tentativar = input("Digite sua senha para acessar os relatórios: ")
     
     if tentativar == senha_segura:
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
         print("\nAcesso permitido. Seja bem vindo!")        
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
     
         print("\nSelecione o relatório que deseja ter acesso:")
@@ -978,7 +978,7 @@ def relatorios(senha_segura):
         print("\n6) Sair")
     
         escolha_relatórios = int(input('\nSua escolha: '))
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
 
 
@@ -1039,7 +1039,7 @@ def acessos_partes():
     print('\n')
     
     escolha_acesso = int(input('\nSua escolha: '))
-    time.sleep(5)
+    time.sleep(1)
     clear_screen()
     
     try: 
@@ -1079,7 +1079,7 @@ def mostrar_notas():
         print('\n')
     
         escolha_notas = int(input('\nSua escolha: '))
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
     
         try: 
@@ -1106,7 +1106,9 @@ def mostrar_notas():
             print('\n')
     
             escolha_notas2 = int(input('\nSua escolha: '))
-    
+            time.sleep(1)
+            clear_screen()
+            
             try: 
                 if escolha_notas2 == 1:
                     acessos["menu"] += 1
@@ -1141,7 +1143,7 @@ def mostrar_senhag():
         print('\n')
     
         escolha_senhag = int(input('\nSua escolha: '))
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
         
         try: 
@@ -1168,7 +1170,7 @@ def mostrar_senhag():
             print('\n')
     
             escolha_senhag2 = int(input('\nSua escolha: '))
-            time.sleep(5)
+            time.sleep(1)
             clear_screen()
             
             try: 
@@ -1206,7 +1208,7 @@ def mostrar_senhat():
         print('\n')
     
         escolha_senhat = int(input('\nSua escolha: '))
-        time.sleep(5)
+        time.sleep(1)
         clear_screen()
         
         try: 
@@ -1233,7 +1235,7 @@ def mostrar_senhat():
             print('\n')
     
             escolha_senhat2 = int(input('\nSua escolha: '))
-            time.sleep(5)
+            time.sleep(1)
             clear_screen()
             
             try: 
