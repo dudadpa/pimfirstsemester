@@ -544,8 +544,7 @@ def quiz_intropython(quiz_1):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos1} de {len(quiz_1)} perguntas.")
     notas_quiz("Introdução à Python", acertos1)
-    time.sleep(2)
-    clear_screen()
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
@@ -639,8 +638,7 @@ def quiz_histcuri(quiz_2):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos2} de {len(quiz_2)} perguntas.")
     notas_quiz("História e Curiosidades", acertos2)
-    time.sleep(2)
-    clear_screen()
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
@@ -735,8 +733,7 @@ def quiz_listcomand(quiz_3):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos3} de {len(quiz_3)} perguntas.")
     notas_quiz("Lista de comandos", acertos3)
-    time.sleep(2)
-    clear_screen()
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
@@ -831,8 +828,7 @@ def quiz_boas_praticas(quiz_4):
             print(f"Errado! A resposta correta era: {item['correta']}) {item['alternativas'][item['correta']]}")
     print(f"\nVocê acertou {acertos4} de {len(quiz_4)} perguntas.")
     notas_quiz("Boas práticas", acertos4)
-    time.sleep(2)
-    clear_screen()
+    print('\n')
     print("\nO que deseja fazer agora:")
     print("\n(1) Menu principal")
     print("(2) Sair")
@@ -881,7 +877,7 @@ def gerador_de_senha_(tamanho = 16, maiusculas = True, minusculas= True, numeros
     senha = ''.join(random.choices(caracteres, k=tamanho))
     return senha
     acessos["menu"] += 1
-    time.sleep(1)
+    time.sleep(4)
     clear_screen()
     menu_principal()
     
@@ -944,7 +940,7 @@ def transformador_de_senha():
         except ValueError:
             print("Entrada inválida! Por favor digite um número inteiro válido.")
 
-        continuar = input("Deseja transformar outra senha? (s/n):  ").strip().lower()
+        continuar = input("\nDeseja transformar outra senha? (s/n):  ").strip().lower()
         acessos["transformador"] += 1
         time.sleep(1)
         clear_screen()
